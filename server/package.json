@@ -22,7 +22,8 @@
     "joi": "^17.11.0",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
-    "typeorm": "^0.3.19"
+    "typeorm": "^0.3.19",
+    "typeorm-extension": "^3.2.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
