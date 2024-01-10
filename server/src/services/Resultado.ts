@@ -1,5 +1,6 @@
 import { AppDataSource } from "../database/data-source";
 import { Bimestre, Disciplina, Resultado } from "../database/entity/Resultado";
+import { ErrorTypes } from "../errors/catalog";
 
 export default class ResultadoService {
   insertGrade = async (
@@ -13,7 +14,7 @@ export default class ResultadoService {
       .values({ disciplina: subject, bimestre: period, nota: grade })
       .returning("*")
       .execute();
-
+      
     const newGrade = result.generatedMaps[0];
     return newGrade;
   };
