@@ -3,7 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 export enum ErrorTypes {
   GenericError = 'GenericError',
   BadRequest = 'BadRequest',
-  ConflictError = 'ConflictError'
+  ConflictError = 'ConflictError',
+  NotFoundError = 'NotFoundError'
 }
 
 interface ErrorResponseObject {
@@ -27,5 +28,9 @@ export const errorCatalog: ErrorCatalog = {
   ConflictError: {
     message: 'It seems that this subject is already created for the selected period',
     httpStatus: StatusCodes.CONFLICT,
+  },
+  NotFoundError: {
+    message: 'Grade Not Found',
+    httpStatus: StatusCodes.NOT_FOUND,
   }
 };

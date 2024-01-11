@@ -7,7 +7,19 @@ export default class ResultadoController {
 
   insertGrade = async (req: Request, res: Response) => {
     const { subject, period, grade } = req.body;
-    const result = await this.resultadoService.insertGrade(subject, period, grade);
+    const formatedGrade = grade.toFixed(2);
+    const result = await this.resultadoService.insertGrade(subject, period, formatedGrade);
     res.status(StatusCodes.CREATED).json(result);
+  }
+
+  listGrades = async (_req: Request, res: Response) => {
+    const result = await this.resultadoService.listGrades();
+    res.status(StatusCodes.OK).json(result);
+  }
+
+  deleteGrade = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    await this.resultadoService.deleteGrade(id);
+    res.status(StatusCodes.GONE).end();
   }
 }
