@@ -1,7 +1,6 @@
 import { ErrorRequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { errorCatalog, ErrorTypes } from '../errors/catalog';
-import { QueryFailedError } from 'typeorm';
 
 interface ExtendedError extends Error {
   code?: string;

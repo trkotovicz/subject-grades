@@ -1,6 +1,6 @@
 import { AppDataSource } from "../database/data-source";
 import { Bimestre, Disciplina, Resultado } from "../database/entity/Resultado";
-import { ErrorTypes } from "../errors/catalog";
+import { resultSchema } from "../utils/validations";
 
 export default class ResultadoService {
   insertGrade = async (
@@ -8,6 +8,7 @@ export default class ResultadoService {
     period: Bimestre,
     grade: number
   ) => {
+    resultSchema({ subject, period, grade });
     const result = await AppDataSource.createQueryBuilder()
       .insert()
       .into(Resultado)

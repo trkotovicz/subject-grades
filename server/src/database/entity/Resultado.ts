@@ -1,4 +1,3 @@
-import { Max, Min } from "class-validator";
 import {
   Column,
   CreateDateColumn,
@@ -29,8 +28,6 @@ export abstract class Resultado {
   id: string;
 
   @Column({ type: "float", nullable: false })
-  @Min(0)
-  @Max(10)
   nota: number;
 
   @Column({ type: "enum", enum: Bimestre, nullable: false })
