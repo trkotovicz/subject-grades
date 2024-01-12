@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { gradesList } from "../services/apiRequests";
 import { IGrades } from "../interfaces/IGrades";
+import GradeCard from "../components/GradeCard";
 
 export default function Grades() {
   const [grades, setGrades] = useState([]);
@@ -22,14 +23,7 @@ export default function Grades() {
       <div>
         <h2>LISTA DE NOTAS</h2>
         { grades.map((grade: IGrades) => (
-          <span key={ grade.id }>
-            <p>{ grade.id }</p>
-            <p>{ grade.disciplina }</p>
-            <p>{ grade.bimestre }</p>
-            <p>{ grade.nota }</p>
-            <p>{ grade.criadoEm }</p>
-            <p>{ grade.atualizadoEm }</p>
-          </span>
+          <GradeCard grade={ grade } key={ grade.id } />
         ))}
       </div>
     </>
