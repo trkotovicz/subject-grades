@@ -31,4 +31,3 @@ export const deleteGrade = async (id: string) => {
     return error;
   }
 };
-

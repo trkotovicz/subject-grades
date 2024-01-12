@@ -1,14 +1,9 @@
-import './index.css'
-
 function App() {
-
   return (
-    <>
-      <div>
-        React + TS
-      </div>
-    </>
-  )
+    <div className="App">
+      APP
+    </div>
+  );
 }
 
-export default App
+export default App;
