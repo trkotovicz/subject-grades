@@ -1,7 +1,9 @@
+import Grades from "./pages/Grades";
+
 function App() {
   return (
     <div className="App">
-      APP
+      <Grades />
     </div>
   );
 }
