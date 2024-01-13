@@ -7,14 +7,14 @@ export interface IGrades {
   atualizadoEm: string;
 }
 
-enum Bimestre {
+export enum Bimestre {
   PRIMEIRO = 'PRIMEIRO',
   SEGUNDO = 'SEGUNDO',
   TERCEIRO = 'TERCEIRO',
   QUARTO = 'QUARTO'
 }
 
-enum Disciplina {
+export enum Disciplina {
   ARTES = 'Artes',
   BIOLOOGIA = 'Biologia',
   GEOGRAFIA = 'Geografia',
