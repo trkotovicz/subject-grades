@@ -4,6 +4,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import GradeCard from "../components/GradeCard";
 import { Bimestre, IGrades } from "../interfaces/IGrades";
 import { deleteGrade, gradesList } from "../services/apiRequests";
+import React from 'react';
 
 export default function Grades() {
   const [grades, setGrades] = useState([]);
@@ -42,10 +43,6 @@ export default function Grades() {
     }
     return bimestres;
   };
- 
-  const orderedBimestres = Object.keys(filteredGrades)
-    .sort((a, b) => (
-      bimestreMapping[a as Bimestre] - bimestreMapping[b as Bimestre]));
 
   const handleDeleteClick = (bimestre: Bimestre, id: string) => {
     deleteGrade(id)
@@ -62,35 +59,40 @@ export default function Grades() {
       });
     };
 
-  return (
-    <>
-      <Box>
+    return (
+      <>
+        <Box>
 
-        { orderedBimestres.map((bimestre: string) => (
-          <Container>
+          { Object.values(Bimestre).map((bimestre: Bimestre) => (
+            <Container key={ bimestre }>
 
-            <Typography variant="h5">
-              Bimestre { bimestreMapping[bimestre as Bimestre] }
-            </Typography>
+              <Typography variant="h5">
+                Bimestre { bimestreMapping[bimestre] }
+              </Typography>
+    
+              { filteredGrades[bimestre]?.length ? (
+                filteredGrades[bimestre]?.map((grade: IGrades) => (
 
-            { filteredGrades[bimestre as Bimestre]!.map((grade: IGrades) => (
-              <>
+                  <>
+                    <GradeCard grade={ grade } key={ grade.id } />
 
-                <GradeCard grade={ grade } key={ grade.id } />
+                    <Tooltip title="Remover" placement="top">
+                      <IconButton onClick={ () => handleDeleteClick(bimestre, grade.id) }>
+                        <FaRegTrashAlt />
+                      </IconButton>
+                    </Tooltip>
 
-                <Tooltip title="Remover" placement="top">
-                  <IconButton onClick={ () => handleDeleteClick(bimestre as Bimestre, grade.id) }>
-                    <FaRegTrashAlt />
-                  </IconButton>
-                </Tooltip>
+                  </>
 
-              </>
-            )) }
+                ))
+              ) : (
+                <br />
+              ) }
 
-          </Container>
-        )) }
+            </Container>
+          )) }
 
-      </Box>
-    </>
-  )
+        </Box>
+      </>
+    )
 }
